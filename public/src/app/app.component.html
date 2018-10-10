@@ -1,0 +1,23 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="col-11 mx-auto bg-dark p-3">
+  <h1 class="text-light">Anonymous Notes</h1>
+  <p class="text-danger" *ngIf="error">{{error}}</p>
+  <form (submit)="submit()" class="bg-light form-inline p-2 rounded">
+    <label class="font-weight-bold">Name:</label>
+    <input class="form-control col-10 mx-auto"
+    name="postData['content']" [(ngModel)]="postData['content']">
+    <input class="col-1 btn btn-dark" type="submit"> 
+  </form>
+
+  <div class="bg-light mt-2" style="height:600px; overflow: scroll">
+    <ul class="list-group">
+      <li 
+      *ngFor="let note of notes" 
+      class="list-group-item pb-5 m-2">
+        <p class="text-right mb-4">Noted on: {{note['createdAt'] | date:'medium' }}</p>
+        {{note['content']}}
+    </li>
+    </ul>
+  </div>
+</div>
+
